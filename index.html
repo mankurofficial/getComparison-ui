@@ -1,0 +1,2113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Get Price Comparison</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+	.tbl-th{
+	height: 30px !important;
+    padding: 5px !important;
+    text-align: center;
+    color: #f5f5f5;
+	}
+	.subhead-tbl-td{
+	height: 30px;
+    padding: 5px !important;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+	}
+	.tbl-td{ 
+    padding: 5px !important;
+  	font-size: 12px;
+    }
+    .subhead-tbl-td-1{
+	height: 30px;
+    padding: 5px !important;
+     
+    font-size: 12px;
+    font-weight: bold;
+	}
+</style>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  
+   
+     <h4>Filter/Sort Bids</h4> 
+    <h6 class="text-muted">
+    ------------------------------------
+	</h6>
+    	<div class="row">
+    		<div class="col-md-6">
+    			<div class="custom-control custom-switch">
+				  <input type="checkbox" class="custom-control-input" id="showbid">
+				  <label class="custom-control-label" for="showbid">Show Quated Line-Items</label>
+				</div>
+    		</div>
+    		<div class="col-md-6">
+    			<div class="btn-group float-right" role="group" aria-label="Basic example">
+				  <button type="button" class="btn btn-primary"><i class="fa fa-sticky-note-o"></i></button>
+				  <button class="btn btn-primary rounded-0" id="quotdata" data-toggle="modal" data-target="#myModal">Create Quotation</button>
+				</div>
+    			
+    		</div>
+
+ 
+ 
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      
+      <div class="modal-header">
+        <h1 class="modal-title">Product Billing</h1>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+       
+      <div class="modal-body">
+      <table id="billingtbl" class="table">
+       <tr><td class="text-center border-0"><h2 id="bproduct">Product Name</h2></td></tr>
+        <tr><td>
+      <table class="table table-bordered">
+       	<thead>
+       	<tr>
+       	 	<th class="text-center">Quantity</th>
+       	 	<th class="text-center"> Unit Price</th>
+       	 	<th class="text-center"> Total</th>
+       	</tr>
+       </thead>
+       <tbody>
+       	<tr>
+       		<td id="bqty" class="text-center"></td>
+       		<td id="buprice" class="text-center"></td>
+       		<td id="btotal" class="text-center"></td>
+       	</tr>
+       	
+       </tbody>
+       </table>
+   </td></tr>
+   <tr><td class="border-0 p-0"><table><tr><td id="bcon" class="border-0 p-0"> </td></tr></table> </td></tr>
+    <tr><td class="border-0 p-0"><table><tr><td id="brem" class="border-0 p-0"> </td></tr></table></td></tr>
+     <tr><td class="border-0 p-0"><table><tr><td id="blead" class="border-0 p-0"> </td></tr></table></td></tr>
+      
+        
+       <tr>
+ 
+<td  class="border-0"><h3>:: Total Billing :: <span id="btotal1"></span></h3></td></tr>
+       </table>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Close</button>
+        <button type="button"  onclick="exportTableToExcel('billingtbl')" class="btn btn-primary float-right">download</button> 
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+ 
+
+    	</div>
+    	
+    
+  </div>
+</div>
+
+<div class="clearfix">&nbsp;</div>
+
+<div class="container">
+<table class="table table-striped table-bordered">
+	<thead class="bg-primary">
+	<tr>
+		<th class="tbl-th">Item</th>
+		<th class="tbl-th">Bid-1</th>
+		<th class="tbl-th">Bid-2</th>
+		<th class="tbl-th">Bid-3</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="p-0" style="height: 25px">
+			 <table class="table table-bordered m-0">
+				<tr class="bg-warning">
+					<td class="subhead-tbl-td">#</td>
+					<td class="subhead-tbl-td">Description</td>
+					<td class="subhead-tbl-td">UOM</td>
+					<td class="subhead-tbl-td">Qty</td>
+				<tr>	
+			 </table>
+			</td>	
+			<td class="p-0" style="height: 25px">
+				<table class="table table-bordered m-0">
+					<tr class="bg-warning">
+						<td class="subhead-tbl-td">Qty</td>
+						<td class="subhead-tbl-td">Unit Price</td>
+						<td class="subhead-tbl-td">Total</td>
+					<tr>	
+				</table>
+			</td>
+			<td class="p-0" style="height: 25px">
+				<table class="table table-bordered m-0">
+					<tr class="bg-warning">
+						<td class="subhead-tbl-td">Qty</td>
+						<td class="subhead-tbl-td">Unit Price</td>
+						<td class="subhead-tbl-td">Total</td>
+					<tr>	
+				</table>
+			</td>
+			<td class="p-0" style="height: 25px">
+				<table class="table table-bordered m-0">
+					<tr class="bg-warning">
+						<td class="subhead-tbl-td">Qty</td>
+						<td class="subhead-tbl-td">Unit Price</td>
+						<td class="subhead-tbl-td">Total</td>
+					<tr>	
+				</table>
+			</td>
+
+		</tr>
+		<tr>
+			<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">1</td>
+					<td class="subhead-tbl-td-1 border-0" id="t1p">Harddisk</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">3</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td1b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="1" class="mr-1 mt-1">
+
+						 <input readonly type="text" class="border-0 bg-transparent" id="t1b1q" value="3" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" id="t1b1u" value="50" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t1b1" class="border-0 bg-transparent" value="150" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+						<td class="border-0 p-0 font-weight-bold"><span id="t1b1con">Condition : Good</span></td></tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold"><span id="t1b1rem">Remark : no</span></td></tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold"><span id="t1b1lead">lead Time : 5</span></td></tr>
+
+				</table>
+			</td>
+			<td class="tbl-td" id="td1b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="2" class="mr-1 mt-1">
+						<input type="text" id="t1b2q" class="border-0 bg-transparent" value="3" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t1b2u" class="border-0 bg-transparent" value="70" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t1b2" class="border-0 bg-transparent" value="210" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+						<td class="border-0 p-0 font-weight-bold"><span id="t1b2con">Condition : Good</span></td></tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold"><span id="t1b2rem">Remark : no</span></td></tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold"><span id="t1b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td1b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="3" class="mr-1 mt-1">
+						<input type="text" id="t1b3q" class="border-0 bg-transparent" value="3" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t1b3u" class="border-0 bg-transparent" value="80" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" id="t1b3" class="border-0 bg-transparent" value="240" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t1b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t1b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t1b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+	<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">2</td>
+					<td class="subhead-tbl-td-1 border-0" id="t2p">Motherboard</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">2</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td2b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="4" class="mr-1 mt-1">
+						 <input readonly type="text" class="border-0 bg-transparent" id="t2b1q" value="2" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" id="t2b1u" value="50" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t2b1" class="border-0 bg-transparent" value="100" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t2b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t2b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t2b1lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td2b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="5" class="mr-1 mt-1">
+						<input type="text" id="t2b2q" class="border-0 bg-transparent" value="2" name="">
+					</div>
+					<div class="col-md-4  col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t2b2u" value="40" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t2b2" class="border-0 bg-transparent" value="80" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t2b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t2b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t2b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td2b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="6" class="mr-1 mt-1">
+						<input type="text" class="border-0 bg-transparent" id="t2b3q" value="2" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t2b3u" value="100" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t2b3" class="border-0 bg-transparent" value="200" name="7445">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t2b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t2b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t2b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+	<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">3</td>
+					<td class="subhead-tbl-td-1 border-0" id="t3p">Display_panel</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">5</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td3b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="7" class="mr-1 mt-1">
+						 <input readonly type="text" class="border-0 bg-transparent" id="t3b1q" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" value="10" id="t3b1u" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t3b1" class="border-0 bg-transparent" value="50" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t3b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t3b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t3b1lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td3b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="8" class="mr-1 mt-1">
+						<input type="text" id="t3b2q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4  col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t3b2u" value="160" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t3b2" class="border-0 bg-transparent" value="800" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t3b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t3b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t3b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td3b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="9" class="mr-1 mt-1">
+						<input type="text" class="border-0 bg-transparent" id="t3b3q" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t3b3u" value="100" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t3b3" class="border-0 bg-transparent" value="500" name="7445">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t3b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t3b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t3b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">4</td>
+					<td class="subhead-tbl-td-1 border-0" id="t4p">Wiring_panel</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">5</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td4b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="10" class="mr-1 mt-1">
+						<input readonly type="text" id="t4b1q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" id="t4b1u" value="110" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t4b1" class="border-0 bg-transparent" value="550" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t4b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t4b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t4b1lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td4b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="11" class="mr-1 mt-1">
+						<input type="text" id="t4b2q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4  col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t4b2u" value="120" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t4b2" class="border-0 bg-transparent" value="600" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t4b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t4b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t4b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td4b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="12" class="mr-1 mt-1">
+						<input type="text" id="t4b3q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" class="border-0 bg-transparent" id="t4b3u" value="20" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t4b3" class="border-0 bg-transparent" value="500" name="7445">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t4b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t4b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t4b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">5</td>
+					<td class="subhead-tbl-td-1 border-0" id="t5p">Keyboard</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">4</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td5b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="13" class="mr-1 mt-1">
+						<input readonly id="t5b1q" type="text" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" id="t5b1u" value="100" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t5b1" class="border-0 bg-transparent" value="400" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t5b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t5b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t5b1lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td5b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="14" class="mr-1 mt-1">
+						<input type="text" id="t5b2q" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t5b2u" value="80" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t5b2" class="border-0 bg-transparent" value="320" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t5b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t5b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t5b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td5b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="15" class="mr-1 mt-1">
+						 <input type="text" id="t5b3q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t5b3u" value="20" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t5b3" class="border-0 bg-transparent" value="500" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t5b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t5b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t5b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">6</td>
+					<td class="subhead-tbl-td-1 border-0" id="t6p">Touch_Panel</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">4</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td6b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="16" class="mr-1 mt-1">
+						 <input readonly id="t6b1q" type="text" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" id="t6b1u" value="100" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t6b1" class="border-0 bg-transparent" value="400" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t6b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t6b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t6b1lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td6b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="17" class="mr-1 mt-1">
+						<input type="text" id="t6b2q" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t6b2u" value="80" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t6b2" class="border-0 bg-transparent" value="320" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t6b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t6b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t6b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td6b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="18" class="mr-1 mt-1">
+						 <input type="text" id="t6b3q" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t6b3u" value="20" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t6b3" class="border-0 bg-transparent" value="80" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t6b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t6b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t6b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">7</td>
+					<td class="subhead-tbl-td-1 border-0" id="t7p">Keyboard</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">4</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td7b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="19" class="mr-1 mt-1">
+						 <input readonly id="t7b1q" type="text" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" id="t7b1u" class="border-0 bg-transparent" value="30" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t7b1" class="border-0 bg-transparent" value="150" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t7b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t7b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t7b1lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td7b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="20" class="mr-1 mt-1">
+						<input type="text" id="t7b2q" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t7b2u" value="40" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t7b2" class="border-0 bg-transparent" value="200" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t7b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t7b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t7b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td7b3">
+				<div class="row m-1">
+
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="21" class="mr-1 mt-1">
+						 <input type="text" id="t7b3q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t7b3u" value="20" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t7b3" class="border-0 bg-transparent" value="500" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t7b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t7b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t7b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">8</td>
+					<td class="subhead-tbl-td-1 border-0" id="t8p">Mouse_Pad</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">4</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td8b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="22" class="mr-1 mt-1">
+						 <input readonly id="t8b1q" type="text" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" id="t8b1u" value="100" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t8b1" class="border-0 bg-transparent" value="400" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t8b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t8b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t8b1lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td8b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="23" class="mr-1 mt-1">
+						<input type="text" id="t8b2q" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t8b2u" value="80" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t8b2" class="border-0 bg-transparent" value="320" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t8b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t8b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t8b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td8b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="24" class="mr-1 mt-1">
+						 <input type="text" id="t8b3q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t8b3u" value="20" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t8b3" class="border-0 bg-transparent" value="500" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t8b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t8b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t8b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+					<td class="subhead-tbl-td-1  border-0">9</td>
+					<td class="subhead-tbl-td-1 border-0" id="t9p">Display_New</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">4</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td9b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						 <input type="radio" id="t1b1c" name="t1b1c" value="25" class="mr-1 mt-1">
+						 <input readonly id="t9b1q" type="text" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" id="t9b1u" value="80" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t9b1" class="border-0 bg-transparent" value="400" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t9b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t9b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t9b1lead">lead Time : 5</span></td></tr>
+				</table>
+				<input type="hidden" id="t9b1h" value="5"/>
+			</td>
+			<td class="tbl-td" id="td9b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="26" class="mr-1 mt-1">
+						<input type="text" id="t9b2q" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t9b2u" class="border-0 bg-transparent" value="80" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 
+						<input type="text" id="t9b2" class="border-0 bg-transparent" value="400" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t9b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t9b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t9b2lead">lead Time : 4</span></td></tr>
+					<input type="hidden" id="t9b2h" value="4"/>
+				</table>
+			</td>
+			<td class="tbl-td" id="td9b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="27" class="mr-1 mt-1">
+						 <input type="text" id="t9b3q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t9b3u" value="80" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t9b3" class="border-0 bg-transparent" value="600" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t9b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t9b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t9b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+<tr>
+		<td class="tbl-td">
+			 <table class="table m-0">
+				<tr class="bg-transparent">
+				<td class="subhead-tbl-td-1  border-0">10</td>
+					<td class="subhead-tbl-td-1 border-0" id="t10p">Mouse_New</td>
+					<td class="subhead-tbl-td-1 border-0">12</td>
+					<td class="subhead-tbl-td-1 border-0">4</td>
+				<tr>	
+			 </table>
+			</td>
+			<td id="td10b1" class="tbl-td">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="28" class="mr-1 mt-1">
+						<input readonly id="t10b1q" type="text" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 <input type="text" class="border-0 bg-transparent" id="t10b1u" value="100" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" id="t10b1" class="border-0 bg-transparent" value="400" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t10b1con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t10b1rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t10b1lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td10b2">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+					 <input type="radio" id="t1b1c" name="t1b1c" value="29" class="mr-1 mt-1">
+						<input type="text" id="t10b2q" class="border-0 bg-transparent" value="4" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t10b2u" value="80" name="">
+					</div>
+					<div class="col-md-4 col-4">
+					 	<input type="text" id="" class="border-0 bg-transparent" value="NA" name="">
+						<input type="hidden" id="t10b2" class="border-0 bg-transparent" value="null" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t10b2con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t10b2rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t10b2lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+			<td class="tbl-td" id="td10b3">
+				<div class="row m-1">
+					<div class="col-md-4 col-4 d-flex">
+						<input type="radio" id="t1b1c" name="t1b1c" value="30" class="mr-1 mt-1">
+						 <input type="text" id="t10b3q" class="border-0 bg-transparent" value="5" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						 
+						<input type="text" class="border-0 bg-transparent" id="t10b3u" value="20" name="">
+					</div>
+					<div class="col-md-4 col-4">
+						<input type="text" id="t10b3" class="border-0 bg-transparent" value="300" name="">
+					</div>
+				</div>
+				<table>
+					<tr  class="bg-transparent">
+					<td class="border-0 p-0 font-weight-bold">
+					<span id="t10b3con">Condition : Good</span>
+					</td>
+					</tr>
+					<tr  class="bg-transparent">
+					 <td class="border-0 p-0 font-weight-bold">
+					<span id="t10b3rem">Remark : no</span></td>
+					</tr>
+					<tr  class="bg-transparent"><td class="border-0 p-0 font-weight-bold">
+					<span id="t10b3lead">lead Time : 5</span></td></tr>
+				</table>
+			</td>
+		</tr>
+
+
+	</tbody>
+</table>
+</div>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script> 
+ 
+	<script type="text/javascript">
+  			function exportTableToExcel(billingtbl, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(billingtbl);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'bid_product_exl.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+}
+  		</script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+ 	$("#showbid").change(function() { 
+ 	 var ischecked = $("#showbid").is(':checked');
+
+  //------Row1-------  
+  if(ischecked){
+	 var a = Math.min($("#t1b1").val(), $("#t1b2").val(), $("#t1b3").val());
+	  
+		   if(a==$("#t1b1").val()){
+		   	 $("#td1b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(a==$("#t1b2").val()){
+		   	 $("#td1b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(a==$("#t1b3").val()){
+		   	 $("#td1b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked){
+			$("#td1b1").css("background-color", "#fff");
+			$("#td1b2").css("background-color", "#fff");
+			$("#td1b3").css("background-color", "#fff");
+		}
+});
+  //-----End Row1 ----------
+
+//------Row2-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked1 = $("#showbid").is(':checked');
+
+	if(ischecked1){
+		var b = Math.min($("#t2b1").val(), $("#t2b2").val(), $("#t2b3").val());
+		   if(b==$("#t2b1").val()){
+		   	 $("#td2b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(b==$("#t2b2").val()){
+		   	 $("#td2b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(b==$("#t2b3").val()){
+		   	 $("#td2b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked1){
+			$("#td2b1").css("background-color", "#fff");
+			$("#td2b2").css("background-color", "#fff");
+			$("#td2b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row2 ----------
+
+
+
+//------Row3-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked2 = $("#showbid").is(':checked');
+
+	if(ischecked2){
+		var c = Math.min($("#t3b1").val(), $("#t3b2").val(), $("#t3b3").val());
+		   if(c==$("#t3b1").val()){
+		   	 $("#td3b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(c==$("#t3b2").val()){
+		   	 $("#td3b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(c==$("#t3b3").val()){
+		   	 $("#td3b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked2){
+			$("#td3b1").css("background-color", "#fff");
+			$("#td3b2").css("background-color", "#fff");
+			$("#td3b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row3 ----------
+
+//------Row4-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked3 = $("#showbid").is(':checked');
+
+	if(ischecked3){
+		var d = Math.min($("#t4b1").val(), $("#t4b2").val(), $("#t4b3").val());
+		   if(d==$("#t4b1").val()){
+		   	 $("#td4b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(d==$("#t4b2").val()){
+		   	 $("#td4b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(d==$("#t4b3").val()){
+		   	 $("#td4b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked3){
+			$("#td4b1").css("background-color", "#fff");
+			$("#td4b2").css("background-color", "#fff");
+			$("#td4b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row4 ----------
+
+
+//------Row5-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked4 = $("#showbid").is(':checked');
+
+	if(ischecked4){
+		var e = Math.min($("#t5b1").val(), $("#t5b2").val(), $("#t5b3").val());
+		   if(e==$("#t5b1").val()){
+		   	 $("#td5b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(e==$("#t5b2").val()){
+		   	 $("#td5b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(e==$("#t5b3").val()){
+		   	 $("#td5b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked4){
+			$("#td5b1").css("background-color", "#fff");
+			$("#td5b2").css("background-color", "#fff");
+			$("#td5b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row5 ----------
+
+
+//------Row6-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked5 = $("#showbid").is(':checked');
+
+	if(ischecked5){
+		var f = Math.min($("#t6b1").val(), $("#t6b2").val(), $("#t6b3").val());
+		   if(f==$("#t6b1").val()){
+		   	 $("#td6b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(f==$("#t6b2").val()){
+		   	 $("#td6b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(f==$("#t6b3").val()){
+		   	 $("#td6b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked5){
+			$("#td6b1").css("background-color", "#fff");
+			$("#td6b2").css("background-color", "#fff");
+			$("#td6b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row6 ----------
+
+
+//------Row7-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked6 = $("#showbid").is(':checked');
+
+	if(ischecked6){
+		var g = Math.min($("#t7b1").val(), $("#t7b2").val(), $("#t7b3").val());
+		   if(g==$("#t7b1").val()){
+		   	 $("#td7b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(g==$("#t7b2").val()){
+		   	 $("#td7b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(g==$("#t7b3").val()){
+		   	 $("#td7b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked6){
+			$("#td7b1").css("background-color", "#fff");
+			$("#td7b2").css("background-color", "#fff");
+			$("#td7b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row7 ----------
+
+
+//------Row8-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked7 = $("#showbid").is(':checked');
+
+	if(ischecked7){
+		var h = Math.min($("#t8b1").val(), $("#t8b2").val(), $("#t8b3").val());
+		   if(h==$("#t8b1").val()){
+		   	 $("#td8b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(h==$("#t8b2").val()){
+		   	 $("#td8b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(h==$("#t8b3").val()){
+		   	 $("#td8b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked7){
+			$("#td8b1").css("background-color", "#fff");
+			$("#td8b2").css("background-color", "#fff");
+			$("#td8b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row8 ----------
+
+
+//------Row9-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked8 = $("#showbid").is(':checked');
+
+	if(ischecked8){
+        
+		var i = Math.min($("#t9b1").val(), $("#t9b2").val(), $("#t9b3").val());
+		  if(i==$("#t9b2").val())
+		  {
+		  	if($("#t9b1h").val()<=$("#t9b2h").val())
+		  	{
+		   	 $("#td9b1").css("background-color", "#fbc2c7");
+		  	}
+		  	else{
+		  		$("#td9b2").css("background-color", "#fbc2c7");
+		  	}
+		   }
+		 
+		 if(i==$("#t9b3").val())
+		  {
+		  	if($("#t9b1h").val()<=$("#t9b3h").val())
+		  	{
+		   	 $("#td9b1").css("background-color", "#fbc2c7");
+		  	}
+		  	else{
+		  		$("#td9b3").css("background-color", "#fbc2c7");
+		  	}
+		   }
+		 
+	 
+		}
+		else if(!ischecked8){
+			$("#td9b1").css("background-color", "#fff");
+			$("#td9b2").css("background-color", "#fff");
+			$("#td9b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row9 ----------
+
+
+//------Row10-------
+
+$("#showbid").change(function() { 
+ 	 var ischecked9 = $("#showbid").is(':checked');
+
+	if(ischecked9){
+     
+		var arr = [$("#t10b1").val(), $("#t10b2").val(), $("#t10b3").val()];
+   var j = Math.min.apply(null, arr.filter(Number));
+		
+		   if(j==$("#t10b1").val()){
+		   	 $("#td10b1").css("background-color", "#fbc2c7");
+		   }
+		   else if(j==$("#t10b2").val()){
+		   	 $("#td10b2").css("background-color", "#fbc2c7");
+		   }
+		   else if(j==$("#t10b3").val()){
+		   	 $("#td10b3").css("background-color", "#fbc2c7");
+		   }
+		}
+		else if(!ischecked9){
+			$("#td10b1").css("background-color", "#fff");
+			$("#td10b2").css("background-color", "#fff");
+			$("#td10b3").css("background-color", "#fff");
+		}
+
+		
+
+	 });
+
+	 //-----End Row5 ----------
+
+
+
+});
+	 
+</script>
+
+ 
+
+
+
+        <script type="text/javascript">
+      $(document).ready(function(){
+        $('#quotdata').click(function(){
+           
+            var btchk=$('input[type="radio"]:checked').val();
+           if($('input[type="radio"]:checked').length == "0")
+           {
+           	alert('Please Choose Any Bid');
+           }
+       else {
+       
+       	if(btchk==1){
+       	 
+        var t1b1q = $("#t1b1q").val();
+		var t1b1u = $("#t1b1u").val();
+		var t1b1 = $("#t1b1").val();
+		var t1b1con =  $("#t1b1con").text();
+		var t1b1rem = $("#t1b1rem").text();
+		var t1b1lead = $("#t1b1lead").text();
+		var tpro = $("#t1p").text();
+
+		 $('#myModal').modal('show');
+
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);
+
+       }else if(btchk==2){
+       	 
+        var t1b1q = $("#t1b2q").val();
+		var t1b1u = $("#t1b2u").val();
+		var t1b1 = $("#t1b2").val();
+		var t1b1con =  $("#t1b2con").text();
+		var t1b1rem = $("#t1b2rem").text();
+		var t1b1lead = $("#t1b2lead").text();
+		var tpro = $("#t1p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==3){
+       	 
+        var t1b1q = $("#t1b3q").val();
+		var t1b1u = $("#t1b3u").val();
+		var t1b1 = $("#t1b3").val();
+		var t1b1con =  $("#t1b3con").text();
+		var t1b1rem = $("#t1b3rem").text();
+		var t1b1lead = $("#t1b3lead").text();
+		var tpro = $("#t1p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	 
+        $('#bproduct').html(tpro);
+       }
+       else if(btchk==4){
+       	 
+        var t1b1q = $("#t2b1q").val();
+		var t1b1u = $("#t2b1u").val();
+		var t1b1 = $("#t2b1").val();
+		var t1b1con =  $("#t2b1con").text();
+		var t1b1rem = $("#t2b1rem").text();
+		var t1b1lead = $("#t2b1lead").text();
+		var tpro = $("#t2p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	 
+        $('#bproduct').html(tpro);
+       }
+       else if(btchk==5){
+       	 
+        var t1b1q = $("#t2b2q").val();
+		var t1b1u = $("#t2b2u").val();
+		var t1b1 = $("#t2b2").val();
+		var t1b1con =  $("#t2b2con").text();
+		var t1b1rem = $("#t2b2rem").text();
+		var t1b1lead = $("#t2b2lead").text();
+		var tpro = $("#t2p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==6){
+       	 
+        var t1b1q = $("#t2b3q").val();
+		var t1b1u = $("#t2b3u").val();
+		var t1b1 = $("#t2b3").val();
+		var t1b1con =  $("#t2b3con").text();
+		var t1b1rem = $("#t2b3rem").text();
+		var t1b1lead = $("#t2b3lead").text();
+		var tpro = $("#t2p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==7){
+       	 
+        var t1b1q = $("#t3b1q").val();
+		var t1b1u = $("#t3b1u").val();
+		var t1b1 = $("#t3b1").val();
+		var t1b1con =  $("#t3b1con").text();
+		var t1b1rem = $("#t3b1rem").text();
+		var t1b1lead = $("#t3b1lead").text();
+		var tpro = $("#t3p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==8){
+       	 
+        var t1b1q = $("#t3b2q").val();
+		var t1b1u = $("#t3b2u").val();
+		var t1b1 = $("#t3b2").val();
+		var t1b1con =  $("#t3b2con").text();
+		var t1b1rem = $("#t3b2rem").text();
+		var t1b1lead = $("#t3b2lead").text();
+		var tpro = $("#t3p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==9){
+       	 
+        var t1b1q = $("#t3b3q").val();
+		var t1b1u = $("#t3b3u").val();
+		var t1b1 = $("#t3b3").val();
+		var t1b1con =  $("#t3b3con").text();
+		var t1b1rem = $("#t3b3rem").text();
+		var t1b1lead = $("#t3b3lead").text();
+		var tpro = $("#t3p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==10){
+       	 
+        var t1b1q = $("#t4b1q").val();
+		var t1b1u = $("#t4b1u").val();
+		var t1b1 = $("#t4b1").val();
+		var t1b1con =  $("#t4b1con").text();
+		var t1b1rem = $("#t4b1rem").text();
+		var t1b1lead = $("#t4b1lead").text();
+		var tpro = $("#t4p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==11){
+       	 
+        var t1b1q = $("#t4b2q").val();
+		var t1b1u = $("#t4b2u").val();
+		var t1b1 = $("#t4b2").val();
+		var t1b1con =  $("#t4b2con").text();
+		var t1b1rem = $("#t4b2rem").text();
+		var t1b1lead = $("#t4b2lead").text();
+		var tpro = $("#t4p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==12){
+       	 
+        var t1b1q = $("#t4b3q").val();
+		var t1b1u = $("#t4b3u").val();
+		var t1b1 = $("#t4b3").val();
+		var t1b1con =  $("#t4b3con").text();
+		var t1b1rem = $("#t4b3rem").text();
+		var t1b1lead = $("#t4b3lead").text();
+		var tpro = $("#t4p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==13){
+       	 
+        var t1b1q = $("#t5b1q").val();
+		var t1b1u = $("#t5b1u").val();
+		var t1b1 = $("#t5b1").val();
+		var t1b1con =  $("#t5b1con").text();
+		var t1b1rem = $("#t5b1rem").text();
+		var t1b1lead = $("#t5b1lead").text();
+		var tpro = $("#t5p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==14){
+       	 
+        var t1b1q = $("#t5b2q").val();
+		var t1b1u = $("#t5b2u").val();
+		var t1b1 = $("#t5b2").val();
+		var t1b1con =  $("#t5b2con").text();
+		var t1b1rem = $("#t5b2rem").text();
+		var t1b1lead = $("#t5b2lead").text();
+		var tpro = $("#t5p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	 
+        $('#bproduct').html(tpro);
+       }
+       else if(btchk==15){
+       	 
+        var t1b1q = $("#t5b3q").val();
+		var t1b1u = $("#t5b3u").val();
+		var t1b1 = $("#t5b3").val();
+		var t1b1con =  $("#t5b3con").text();
+		var t1b1rem = $("#t5b3rem").text();
+		var t1b1lead = $("#t5b3lead").text();
+		var tpro = $("#t5p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	 
+        $('#bproduct').html(tpro);
+       }
+       else if(btchk==16){
+       	 
+        var t1b1q = $("#t6b1q").val();
+		var t1b1u = $("#t6b1u").val();
+		var t1b1 = $("#t6b1").val();
+		var t1b1con =  $("#t6b1con").text();
+		var t1b1rem = $("#t6b1rem").text();
+		var t1b1lead = $("#t6b1lead").text();
+		var tpro = $("#t6p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==17){
+       	 
+        var t1b1q = $("#t6b2q").val();
+		var t1b1u = $("#t6b2u").val();
+		var t1b1 = $("#t6b2").val();
+		var t1b1con =  $("#t6b2con").text();
+		var t1b1rem = $("#t6b2rem").text();
+		var t1b1lead = $("#t6b2lead").text();
+		var tpro = $("#t6p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==18){
+       	 
+        var t1b1q = $("#t6b3q").val();
+		var t1b1u = $("#t6b3u").val();
+		var t1b1 = $("#t6b3").val();
+		var t1b1con =  $("#t6b3con").text();
+		var t1b1rem = $("#t6b3rem").text();
+		var t1b1lead = $("#t6b3lead").text();
+		var tpro = $("#t6p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==19){
+       	 
+        var t1b1q = $("#t7b1q").val();
+		var t1b1u = $("#t7b1u").val();
+		var t1b1 = $("#t7b1").val();
+		var t1b1con =  $("#t7b1con").text();
+		var t1b1rem = $("#t7b1rem").text();
+		var t1b1lead = $("#t7b1lead").text();
+		var tpro = $("#t7p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==20){
+       	 
+        var t1b1q = $("#t7b2q").val();
+		var t1b1u = $("#t7b2u").val();
+		var t1b1 = $("#t7b2").val();
+		var t1b1con =  $("#t7b2con").text();
+		var t1b1rem = $("#t7b2rem").text();
+		var t1b1lead = $("#t7b2lead").text();
+		var tpro = $("#t7p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==21){
+       	 
+        var t1b1q = $("#t7b3q").val();
+		var t1b1u = $("#t7b3u").val();
+		var t1b1 = $("#t7b3").val();
+		var t1b1con =  $("#t7b3con").text();
+		var t1b1rem = $("#t7b3rem").text();
+		var t1b1lead = $("#t7b3lead").text();
+		var tpro = $("#t7p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==22){
+       	 
+        var t1b1q = $("#t8b1q").val();
+		var t1b1u = $("#t8b1u").val();
+		var t1b1 = $("#t8b1").val();
+		var t1b1con =  $("#t8b1con").text();
+		var t1b1rem = $("#t8b1rem").text();
+		var t1b1lead = $("#t8b1lead").text();
+		var tpro = $("#t8p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	 
+        $('#bproduct').html(tpro);
+       }
+       else if(btchk==23){
+       	 
+        var t1b1q = $("#t8b2q").val();
+		var t1b1u = $("#t8b2u").val();
+		var t1b1 = $("#t8b2").val();
+		var t1b1con =  $("#t8b2con").text();
+		var t1b1rem = $("#t8b2rem").text();
+		var t1b1lead = $("#t8b2lead").text();
+		var tpro = $("#t8p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==24){
+       	 
+        var t1b1q = $("#t8b3q").val();
+		var t1b1u = $("#t8b3u").val();
+		var t1b1 = $("#t8b3").val();
+		var t1b1con =  $("#t8b3con").text();
+		var t1b1rem = $("#t8b3rem").text();
+		var t1b1lead = $("#t8b3lead").text();
+		var tpro = $("#t8p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	
+        $('#bproduct').html(tpro); 
+       }
+       else if(btchk==25){
+       	 
+         var t1b1q = $("#t9b1q").val();
+		var t1b1u = $("#t9b1u").val();
+		var t1b1 = $("#t9b1").val();
+		var t1b1con =  $("#t9b1con").text();
+		var t1b1rem = $("#t9b1rem").text();
+		var t1b1lead = $("#t9b1lead").text();
+		var tpro = $("#t9p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==26){
+       	 
+        var t1b1q = $("#t9b2q").val();
+		var t1b1u = $("#t9b2u").val();
+		var t1b1 = $("#t9b2").val();
+		var t1b1con =  $("#t9b2con").text();
+		var t1b1rem = $("#t9b2rem").text();
+		var t1b1lead = $("#t9b2lead").text();
+		var tpro = $("#t9p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==27){
+       	 
+        var t1b1q = $("#t9b3q").val();
+		var t1b1u = $("#t9b3u").val();
+		var t1b1 = $("#t9b3").val();
+		var t1b1con =  $("#t9b3con").text();
+		var t1b1rem = $("#t9b3rem").text();
+		var t1b1lead = $("#t9b3lead").text();
+		var tpro = $("#t9p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	 
+        $('#bproduct').html(tpro);
+       }
+       else if(btchk==28){
+       	 
+        var t1b1q = $("#t10b1q").val();
+		var t1b1u = $("#t10b1u").val();
+		var t1b1 = $("#t10b1").val();
+		var t1b1con =  $("#t10b1con").text();
+		var t1b1rem = $("#t10b1rem").text();
+		var t1b1lead = $("#t10b1lead").text();
+		var tpro = $("#t10p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);
+        $('#bproduct').html(tpro);	 
+       }
+       else if(btchk==29){
+       	 
+        var t1b1q = $("#t10b2q").val();
+		var t1b1u = $("#t10b2u").val();
+		var t1b1 = $("#t10b2").val();
+		var t1b1con =  $("#t10b2con").text();
+		var t1b1rem = $("#t10b2rem").text();
+		var t1b1lead = $("#t10b2lead").text();
+		var tpro = $("#t10p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	 
+        $('#bproduct').html(tpro);
+       }
+       else if(btchk==30){
+       	 
+        var t1b1q = $("#t10b3q").val();
+		var t1b1u = $("#t10b3u").val();
+		var t1b1 = $("#t10b3").val();
+		var t1b1con =  $("#t10b3con").text();
+		var t1b1rem = $("#t10b3rem").text();
+		var t1b1lead = $("#t10b3lead").text();
+		var tpro = $("#t10p").text();
+		 	$('#myModal').modal('show');
+		$('#bqty').html(t1b1q);
+		$('#buprice').html(t1b1u);
+		$('#btotal').html(t1b1);
+		$('#btotal1').html(t1b1);
+		$('#bcon').html(t1b1con);
+        $('#brem').html(t1b1rem);   
+        $('#blead').html(t1b1lead);	 
+        $('#bproduct').html(tpro);	
+       }
+
+       }
+            return false;
+            });
+            });
+
+  </script>
+
+ 
+</body>
+</html>
